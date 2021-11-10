@@ -1,0 +1,22 @@
+{
+    "name": "hostlink/hostlink-storage-adapter",
+    "description": "A flysystem adapter",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Raymond Chong",
+            "email": "mathsgod@yahoo.com"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^7.4"
+    },
+    "require-dev": {
+        "league/flysystem": "^2.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "HL\\Storage\\": "src/"
+        }
+    }
+}
