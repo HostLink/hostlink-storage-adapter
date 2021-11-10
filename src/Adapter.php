@@ -83,7 +83,7 @@ class Adapter implements FilesystemAdapter
 
     function visibility(string $path): FileAttributes
     {
-        return new FileAttributes($path, null, null, null, null);
+        return new FileAttributes($path, null, "private", null, null);
     }
 
     function mimeType(string $path): FileAttributes
@@ -118,7 +118,7 @@ class Adapter implements FilesystemAdapter
         $ret = [];
         foreach ($data as $d) {
             if ($d['type'] == 'file') {
-                $ret[] = new FileAttributes($d['path'], $d['size'], null, $d['modified'], $d['mime']);
+                $ret[] = new FileAttributes($d['path'], $d['size'], "private", $d['modified'], $d['mime']);
             } else {
                 $ret[] = new DirectoryAttributes($d['path'], null, $d['modified']);
             }
