@@ -42,7 +42,7 @@ class Adapter implements FilesystemAdapter
         if (str_starts_with($path, '/')) {
             $path = substr($path, 1);
         }
-        
+
         $this->client->put($path, [
             'body' => $contents
         ]);
@@ -163,7 +163,15 @@ class Adapter implements FilesystemAdapter
             $path = substr($path, 1);
         }
 
+        if (!str_ends_with($path, '/')) {
+            $path .= '/';
+        }
+
+        if ($path == "/") {
+            $path = "";
+        }
         $response = $this->client->get($path);
+
         $data = json_decode($response->getBody()->getContents(), true);
         $ret = [];
         foreach ($data as $d) {
@@ -176,6 +184,7 @@ class Adapter implements FilesystemAdapter
 
         return $ret;
     }
+
 
     function move(string $source, string $destination, Config $config): void
     {
